@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For my love</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="card">
+            <img data-stage="1" class="card__image" src="notebook.svg" alt="notebook">
+            <div class="card__content hide" data-stage="2">
+                <video poster="1-gif.gif"></video>
+                <div class="text">Take my hand, take my whole life too, but I can't help failling in love with you.
+                </div>
+            </div>
+            <div class="card__content hide" data-stage="3">
+                <video poster="2-gif.gif"></video>
+                <div class="text">When you love someone, you love the whole person as he or she is, and not as you would
+                    like them to be.</div>
+            </div>
+            <div class="card__content hide" data-stage="4">
+                <video poster="3-gif.gif"></video>
+                <div class="text">Love is something eternal ... The aspect may change but not the essence.</div>
+            </div>
+            <div class="card__content hide" data-stage="5">
+                <video poster="4-gif.gif"></video>
+                <div class="text">You can't blame gravity for falling in love.</div>
+            </div>
+            <div class="card__content hide" data-stage="6">
+                <video poster="5-gif.gif"></video>
+                <div class="text">Happy valentine's day, my dear ❤️</div>
+            </div>
+            <div class="card__button">
+                <img src="heart.svg" alt="heart">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const button = document.querySelector('.card__button');
+        const stages = document.querySelectorAll('[data-stage]');
+
+        let stage = 1;
+
+        stages[0].style.opacity = '1';
+
+        button.addEventListener('click', () => {
+            button.style.transform = 'scale(0.9)';
+
+            setTimeout(() => {
+                button.style.transform = 'scale(1.1)';
+            }, 100)
+
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+                nextStage()
+            }, 300)
+        })
+
+        function nextStage() {
+            stage++;
+            if (stage > 6) stage = 1;
+            stages.forEach((el) => {
+                if (+el.getAttribute('data-stage') === stage) {
+                    el.classList.remove('hide')
+
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                    }, 600)
+                } else {
+                    el.style.opacity = '0'
+
+                    setTimeout(() => {
+                        el.classList.add('hide')
+                    }, 300)
+                }
+            })
+
+        }
+    </script>
+</body>
+
+</html>
